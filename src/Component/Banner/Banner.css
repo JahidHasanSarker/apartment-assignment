@@ -1,0 +1,16 @@
+.img-size{
+    max-height: 780px;
+}
+.carousel-caption{
+    position: absolute;
+    top: 44%;
+    bottom: 1.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center;
+}
+h3{
+    font-size: 40px;
+    font-weight: 800;
+}

@@ -1,0 +1,23 @@
+.input-gap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center center;
+    align-items: center;
+    margin: 200px 0;
+}
+.input-gap input{
+    
+    height: 50px;
+    border: 1px solid gray;
+    outline-color: #e78171be;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 100px;
+}
+.input-btn{
+    width: 100px !important;
+    background-color: #dcc397;
+    color: white;
+    font-weight: 700;
+}

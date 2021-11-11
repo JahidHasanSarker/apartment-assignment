@@ -1,0 +1,36 @@
+.img-overlay{
+    position: relative;
+    display: block;
+}
+.overlay-padding{
+    position: relative;
+    display: block;
+    
+}
+.notfound-img{
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+}
+.notfound-img img{
+    width: 100%;
+    opacity: 1;   
+}
+.img-text{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
+
+.bg-overlay{
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(20, 22, 37, 0.733);
+}
