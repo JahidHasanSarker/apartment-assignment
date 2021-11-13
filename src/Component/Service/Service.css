@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
 #cards_landscape_wrap-2{
     text-align: center;
     
@@ -74,11 +75,11 @@
   }
   #cards_landscape_wrap-2 .card-flyer .text-box h6{
     margin-top: 0px;
-    margin-bottom: 4px; 
+  
     font-size: 20px;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-family: 'Roboto Black', sans-serif;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-family: 'Jost', sans-serif;
     letter-spacing: 1px;
     color: #e8604c;
   }

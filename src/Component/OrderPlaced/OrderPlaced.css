@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
 .input-style{
     display: flex;
     flex-direction: column;
@@ -10,7 +11,7 @@
     height: 35px;
     margin: 10px 0;
     border-radius: 10px;
-    outline-color: #e78171be;
+    outline-color: #dcc397;
     border: 1px solid gray;
 }
 
@@ -20,7 +21,7 @@
     margin:0 auto;
     border: 1px solid gray;
     border-radius: 10px;
-    outline-color: #e78171be;
+    outline-color: #dcc397;
 }
 .submit-btn{
     background-color:  white;
@@ -51,4 +52,45 @@ body{
     /* color: #0c63e4; */
     background-color: #fff !important;
     box-shadow: 0 !important;
+}
+
+.order-details h3{
+    font-size: 25px;
+    font-weight: 700;
+    color: #2D3954;
+    font-family: 'Jost', sans-serif;
+    margin-top: 10px;
+  }
+  .order-details h4{
+    font-size: 15px;
+    margin: 10px 0;
+    font-weight: 400;
+    color: #4e5c79;
+  }
+  .order-details h5{
+      font-size: 24px;
+      font-weight: 700;
+      font-family: 'Jost', sans-serif;
+      color: #dcc397;
+  }
+.order-details span{
+    
+    padding:  8px 15px;
+    background-color: rgba(247, 68, 0, 0.1);
+    border-radius: 0 10px;
+    color: #f74400;
+    margin-bottom: 10px;
+}
+.text-color {
+    color: #dcc397;
+}
+.accordion-button:not(.collapsed) {
+    color: #dcc397;
+}
+.accordion-button:not(.collapsed)::after {
+    filter: grayscale(100%);
+}
+
+.rounded-bg{
+    border-radius: 10px;
 }

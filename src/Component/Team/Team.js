@@ -9,7 +9,7 @@ const Team = () => {
             <Container>
                 <div className="text-center my-5">
                     <h1 className="fw-bold">Meet The Team</h1>
-                    <p className="my-5">Stop being afraid of what could go wrong, and start being excited of what could go right</p>
+                    <p className="my-5">Meet our team of digital warriors ready to harness the force for good create most powerfull outcomes for our cliants</p>
                 </div>
 
                 

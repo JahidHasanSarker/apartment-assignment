@@ -6,17 +6,11 @@ import { Link } from 'react-router-dom';
 const NotFound = () => {
     return (
         <div>
-            <div className="img-overlay">
-                <div className="overlay-padding">
-                    <div className="notfound-img">
-                        <img src="http://amentotech.com/htmls/tenanto/images/slider-imgs/banner-img.jpg" alt="" />
-                    </div>
-                    <div className="bg-overlay"></div>
-                </div>
-           </div>
-                    <div className="img-text">
-                        <h2 className="text-white fw-bolder overlay-text">Not Found Page</h2>
-                    </div>
+            <div className="containerdd">
+                        <img src="http://amentotech.com/htmls/tenanto/images/slider-imgs/banner-img.jpg" alt="" style={{width:"100%" }} />
+                        <div className="bg-overlay"></div>
+                        <div className="centeredd text-black text-white fw-bolder fs-2">Not Found Page</div>
+            </div>
             <Container>
                         
                 <div className="text-center py-5">

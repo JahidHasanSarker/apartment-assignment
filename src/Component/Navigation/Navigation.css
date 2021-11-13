@@ -20,15 +20,15 @@
     margin-left: 10px;
     font-size: 16px;
     font-weight: 600;
-    background-color: rgb(231, 39, 39);
-    border: 1px solid rgba(14, 178, 228, 0.795);
+    background-color: #dcc397;
+    border: 1px solid #dcc397;
     border-radius: 7px;
     padding: 8px 20px;
 }
 
 .custom-logout:hover{
     color:rgb(245, 243, 243);
-    background-color: rgb(250, 52, 45);
+    background-color: #e4d1b1;
     
 }
 

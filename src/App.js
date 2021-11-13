@@ -28,9 +28,9 @@ function App() {
                 <Route path="/explore">
                   <Services></Services>
                 </Route>
-                <Route path="/orderPlaced">
+                <PrivetRoute path="/orderPlaced/:id">
                   <OrderPlaced></OrderPlaced>
-                </Route>
+                </PrivetRoute>
                 <Route path="/dashboard">
                   <Dashboard></Dashboard>
                 </Route>

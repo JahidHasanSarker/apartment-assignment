@@ -1,4 +1,5 @@
 import * as React from 'react';
+import useAuth from '../../Hook/useAuth';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -35,6 +36,7 @@ import MakeAdmin from './MakeAdmin/MakeAdmin';
 const drawerWidth = 240;
 
 function Dashboard(props) {
+  const { logOut } = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -111,6 +113,13 @@ function Dashboard(props) {
           <ListItem>
           
           <Link to={`${url}/pay`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto' }}><Button variant="text">Pay</Button></Link>
+                           
+                        
+          </ListItem>
+
+          <ListItem>
+          
+          <Link to="/login" onClick={logOut} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto' }}><Button variant="contained">logOut</Button></Link>
                            
                         
           </ListItem>

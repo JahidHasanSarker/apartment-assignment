@@ -1,40 +1,73 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Button, Container, Table } from 'react-bootstrap';
 
 const ManageProducts = () => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+        .then(res => res.json())
+        .then(data => setProducts(data))
+    }, [])
+
+    const handleDelete = id => {
+
+        const proceed = window.confirm('Are you Sure you want to deleted ?')
+            if (proceed) {
+                axios.delete(`http://localhost:5000/products/${id}`)
+            .then(res => {
+                if (res.data.deletedCount > 0) {
+                    alert('deleted successfully');
+                    const remainingUser = products.filter(order => order._id !== id)
+                    setProducts(remainingUser); 
+    
+                }
+            })
+            }
+    
+    }
+
     return (
         <div>
-            <Table striped bordered hover size="sm">
+            <Container>
+
+            <div responsive="sm, md, lg, xl">
+            <Table className="text-center align-middle" striped bordered hover size="sm">
+                
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Product Img</th>
+                        <th>Product Name</th>
+                        <th>Product Location</th>
+                        <th>Product Price</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Almas</td>
-                        <td>Alex</td>
-                        <td>@twitter</td>
-                    </tr>
+
+                {
+                    products.map((product, index) => 
+            
+                    <tr key={product._id}>
+                        <td>{index + 1}</td>
+                        <td><img width="150px" src={product.img} alt="" /></td>
+                        <td>{product.title}</td>
+                        <td>{product.location}</td>
+                        <td>${product.price}</td>
+                        <td><Button onClick={() => handleDelete(product._id)} variant="danger">Delete</Button></td>
+                    </tr>)
+
+                }
                     
                 </tbody>
+                
             </Table>
+            </div>
+
+            </Container>
         </div>
     );
 };

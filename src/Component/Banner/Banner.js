@@ -14,7 +14,7 @@ const Banner = () => {
                     />
                     <Carousel.Caption>
                         <h3>Modern House Make Better Life</h3>
-                        <p>We believe that only an experienced travel expert can help you discover its unique and amazing qualities. </p>
+                        <p>Blending Relaxation & Sophistication to Create the Ideal Place </p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -25,7 +25,7 @@ const Banner = () => {
                     />
                     <Carousel.Caption>
                         <h3>Lets Take you to your Dream House</h3>
-                        <p>We believe that only an experienced travel expert can help you discover its unique and amazing qualities. </p>
+                        <p>Modern Conveniences & Entertainment, All Within Your Reach </p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -36,7 +36,7 @@ const Banner = () => {
                     />
                     <Carousel.Caption>
                         <h3>Perfect Home for a Perfect Life</h3>
-                        <p>We believe that only an experienced travel expert can help you discover its unique and amazing qualities. </p>
+                        <p>With everything you’ve ever dreamt of at your fingertips, you may not want to leave </p>
                     </Carousel.Caption>
                 </Carousel.Item>
   
