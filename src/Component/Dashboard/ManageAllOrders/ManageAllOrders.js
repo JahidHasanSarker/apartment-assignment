@@ -46,19 +46,7 @@ const ManageAllOrders = () => {
         setStatus(id);
       };
 
-    // const handleApprove = id => {
-    //     id.status ='Approved';
-    //     axios.put(`http://localhost:5000/orders/${id._id}`)
-        
-    //   .then((result) => {
-    //     if (result.data.modifiedCount) {
-    //         alert('Update Successful')
-    //         setIsUpdate(true);
-    //     } else {
-    //         setIsUpdate(false);
-    //     }
-    //   });
-    // }
+   
 
     return (
 
