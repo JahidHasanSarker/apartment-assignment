@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import authInit from '../Component/Login/firebase/firebase.init';
+//import axios from 'axios';
 
 
 
@@ -9,13 +10,13 @@ authInit();
 const useFirebase = () => {
     const auth = getAuth();
     const [user, setUser] = useState({});
+    const [admin, setAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
     const [name, setName] = useState('');
     const [email, setEmail]= useState('');
     const [password, setPassword]= useState('');
     const [error, setError]= useState('');
     const [isLogin, setIsLogin]= useState(false);
-
 
 
     const googleProvider = new GoogleAuthProvider();
@@ -55,7 +56,7 @@ const useFirebase = () => {
         setPassword(e.target.value);
     }
     const handleregister = e => {
-        e.preventDefault();
+        e.preventDefault()
         console.log(email, password);
         if(password.length < 6){
             setError('Password must be 6 charecter long')
@@ -82,9 +83,14 @@ const useFirebase = () => {
           .then(result => { })
       }
 
-    const createNewUser = (email, password) => {
+    const createNewUser = (email, password ) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then(result=>{
+        
+            hanldeUserInfoRegister(result.user.email )
+                
+            // save user to the database
+                
             const user = result.user;
             console.log(user);
             setError('');
@@ -115,9 +121,28 @@ const useFirebase = () => {
         return () => unsubscribe();
     }, [auth]);
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
+    const hanldeUserInfoRegister = (email) => {
+        const user = { email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((result) => console.log(result));
+      };
+
+
     return {
         user,
         signInUsingGoogle,
+        admin,
         loading, 
         setLoading,
         toggolLogin,

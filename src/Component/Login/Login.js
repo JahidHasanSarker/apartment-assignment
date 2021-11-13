@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+
 import useAuth from '../../Hook/useAuth';
 import { useHistory, useLocation } from "react-router";
 import authInit from './firebase/firebase.init';
@@ -9,10 +10,13 @@ import './Login.css';
 authInit();
 
 
+
 const Login = () => {
 
 
-    const {signInUsingGoogle, setLoading, isLogin, handleregister, handleNameChange, handleEmailChange,      handlePasswordChange, error, toggolLogin} = useAuth();
+
+const {signInUsingGoogle, setLoading, isLogin, handleregister, handleNameChange, handleEmailChange,      handlePasswordChange, error, toggolLogin} = useAuth();
+
 const location = useLocation();
 const history = useHistory();
 const redirect_uri = location.state?.from || '/'
@@ -29,7 +33,6 @@ const handleGoogleLogin = () => {
       setLoading(false);
     });
 }
-
 
 
     return (

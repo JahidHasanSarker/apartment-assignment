@@ -6,7 +6,11 @@ import { Button, Container, Table } from 'react-bootstrap';
 const ManageAllOrders = () => {
     
     const [orders, setOrders] = useState([]);
+    const [status, setStatus] = useState("");
    
+    const handleStatus = (e) => {
+        setStatus(e.target.value);
+      };
 
     useEffect(() => {
         fetch('http://localhost:5000/orders')
@@ -18,7 +22,7 @@ const ManageAllOrders = () => {
 
         const proceed = window.confirm('Are you Sure you want to deleted ?')
             if (proceed) {
-                axios.delete(`http://localhost:5000/orders/${id}`)
+                axios.delete(`http://localhost:5000/orders/${id._id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
                     alert('deleted successfully');
@@ -31,19 +35,33 @@ const ManageAllOrders = () => {
     
     }
 
-    const handleApprove = id => {
-        id.status ='Approved';
-        axios.put(`http://localhost:5000/orderUpdate/${id._id}`)
-        .then(res => {
-            if (res.data.modifiedCount) {
-                
-                alert('Approved Successfully');
-                
-            } 
-        })
-    }
+    const handleUpdate = (id) => {
+        
+        fetch(`http://localhost:5000/updateStatus/${id}`, {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ status }),
+        });
+    
+        setStatus(id);
+      };
+
+    // const handleApprove = id => {
+    //     id.status ='Approved';
+    //     axios.put(`http://localhost:5000/orders/${id._id}`)
+        
+    //   .then((result) => {
+    //     if (result.data.modifiedCount) {
+    //         alert('Update Successful')
+    //         setIsUpdate(true);
+    //     } else {
+    //         setIsUpdate(false);
+    //     }
+    //   });
+    // }
 
     return (
+
         <div responsive="sm, md, lg, xl">
             <Container>
             <Table className="text-center align-middle" striped bordered hover size="sm">
@@ -71,22 +89,13 @@ const ManageAllOrders = () => {
                             <td>{order.address}</td>
                             <td>{order.title}</td>
                             
-                            <td><Button onClick={() => handleApprove(order)} variant="primary">Update</Button>
-                            
-                            {/* <form onSubmit={handleSubmit(onSubmit)}>
-                            <select
-                                onClick={() => handleOrderId(pd?._id)}
-                                {...register("status")}
-                            >
-                                <option value={pd?.status}>{pd?.status}</option>
-                                <option value="approve">approve</option>
-                                <option value="done">Done</option>
-                            </select>
-                            <input type="submit" />
-                            </form> */}
-                            
-                             <Button onClick={() => handleDelete(order._id)} variant="danger">Delete</Button></td>
-                            <td>{order.status}</td>
+                            <td><Button onClick={() => handleUpdate(order._id)} variant="primary">Update</Button> <Button onClick={() => handleDelete(order._id)} variant="danger">Delete</Button></td>
+                             {/* <td>{order.status}</td> */}
+                            <td><input className="text-center"
+                                onChange={handleStatus}
+                                type="text"
+                                defaultValue={order.status}
+                                /></td>
                         </tr>)
 
                     }

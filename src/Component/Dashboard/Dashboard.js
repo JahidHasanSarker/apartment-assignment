@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import useAuth from '../../Hook/useAuth';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -31,12 +31,14 @@ import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageProducts/ManageProducts';
 import AddProducts from './AddProducts/AddProducts';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
+import AdminRoute from '../Login/AdminRoute/AdminRoute';
 //import Img from '../../undraw_software_engineer_lvl5.svg';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
-  const { logOut } = useAuth();
+
+  const { logOut, admin } = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -47,8 +49,11 @@ function Dashboard(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  
+
+
   const drawer = (
-    <div>
+    <Box>
       
       <Toolbar />
       <Divider />
@@ -68,36 +73,40 @@ function Dashboard(props) {
  
                         
           </ListItem>
+        
+          {admin && <Box>
+            <ListItem>
+     
+            <Link to={`${url}/manageAllOrders`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Manage All Orders</Button></Link>
+            </ListItem>
 
-          <ListItem>
+            <ListItem>
+            <Link to={`${url}/manageProducts`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Manage Procuts</Button></Link>
+            </ListItem>
+
+            <ListItem>
+            <Link to={`${url}/addProducts`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Add Product</Button></Link> 
+            </ListItem>
+            
+            <ListItem>
+            <Link to={`${url}/makeAdmin`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Make Admin</Button></Link>
+            </ListItem>
+
+            </Box>}
+
+           
+           
+
+            {/*  */}
+
+         
+
+
+     
+
+
+
           
-            <Link to={`${url}/manageAllOrders`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Manage All Orders</Button></Link>   
- 
-                        
-          </ListItem>
-
-          <ListItem>
-          
-            <Link to={`${url}/manageProducts`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Manage Procuts</Button></Link>   
- 
-                        
-          </ListItem>
-
-          <ListItem>
-          
-            <Link to={`${url}/addProducts`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Add Product</Button></Link>   
- 
-                        
-          </ListItem>
-
-
-
-          <ListItem>
-          
-          <Link to={`${url}/makeAdmin`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto'}}><Button variant="text">Make Admin</Button></Link>  
-                           
-                        
-          </ListItem>
           <ListItem>
           
           <Link to={`${url}/myOrders`} style={{textDecoration: 'none', textAlign: 'center', color: 'black', margin : '0 auto' }}><Button variant="text">My Orders</Button></Link>
@@ -126,7 +135,7 @@ function Dashboard(props) {
        
       </List>
       
-    </div>
+    </Box>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -207,15 +216,16 @@ function Dashboard(props) {
           <Route path={`${path}/manageAllOrders`}>
             <ManageAllOrders></ManageAllOrders>
           </Route>
-          <Route path={`${path}/manageProducts`}>
+          <AdminRoute path={`${path}/manageProducts`}>
             <ManageProducts></ManageProducts>
-          </Route>
-          <Route path={`${path}/addProducts`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/addProducts`}>
             <AddProducts></AddProducts>
-          </Route>
-          <Route path={`${path}/makeAdmin`}>
-            <MakeAdmin></MakeAdmin>
-          </Route>
+          </AdminRoute>
+
+          <AdminRoute path={`${path}/makeAdmin`}>
+              <MakeAdmin></MakeAdmin>
+          </AdminRoute>
 
 
           <Route path={`${path}/myOrders`}>
